@@ -38,13 +38,16 @@ PS_WRITE_FUNC(uwsgi) {
 	char *cache = PS_GET_MOD_DATA();
 #ifdef UWSGI_PHP7
 	if (val->len == 0) return SUCCESS;
+
 	if (!uwsgi_cache_magic_set(key->val, key->len, val->val, val->len, 0, UWSGI_CACHE_FLAG_UPDATE, cache)) {
 #else
 	if (vallen == 0) return SUCCESS;
+
 	if (!uwsgi_cache_magic_set((char *)key, strlen(key), (char *)val, vallen, 0, UWSGI_CACHE_FLAG_UPDATE, cache)) {
 #endif
 		return SUCCESS;	
 	}
+
 	return FAILURE;
 }
 
@@ -60,6 +63,7 @@ PS_DESTROY_FUNC(uwsgi) {
 #endif
 		return SUCCESS;
 	}
+
 	return FAILURE;
 }
 
