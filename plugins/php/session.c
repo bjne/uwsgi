@@ -70,4 +70,3 @@ PS_GC_FUNC(uwsgi) {
 ps_module ps_mod_uwsgi = {
 	PS_MOD(uwsgi)
 };
-
